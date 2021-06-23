@@ -12,32 +12,35 @@
 </head>
 <body>
 
-    <div id="app">
+    <div id="container">
+        <div id="app">
 
-        <header>
-            <div class="bold">To Do</div>
-            <div>List</div>
-        </header>
-
-        <nav>
-            <input type="text" v-model="newTask" @keyup.enter="addTask">
-            <div id="add" class="center" @click="addTask">add</div>
-        </nav>
-
-        <main>
-            <ul>
-                <li v-for="(task, index) in tasks">
-                    {{task}}
-                    <i class="fas fa-minus-circle" @click="removeTask(index)"></i>
-                </li>
-            </ul>
-
-            <div v-if="tasks.length == 0">Nothing to do</div>
-
-        </main>
-
-
+            <header>
+                <div class="bold">To Do</div>
+                <div>List</div>
+            </header>
+    
+            <nav>
+                <input type="text" v-model="newTask" @keyup.enter="addTask">
+                <div id="add" class="center" @click="addTask"><i class="fas fa-plus"></i></div>
+            </nav>
+    
+            <main>
+                <ul>
+                    <li v-for="(task, index) in tasks">
+                        {{task}}
+                        <i class="fas fa-minus-circle" @click="removeTask(index)"></i>
+                    </li>
+                </ul>
+    
+                <div v-if="tasks.length == 0">Nothing to do</div>
+    
+            </main>
+    
+    
+        </div> 
     </div>
+       
     
     <script src="js/script.js"></script>
     
