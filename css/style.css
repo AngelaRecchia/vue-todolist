@@ -3,3 +3,37 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: LemonMilkBold;
+    src: url(LEMONMILK-Bold.otf);
+}
+
+@font-face {
+    font-family: LemonMilkLight;
+    src: url(LEMONMILK-Light.otf);
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+}
+
+header {
+    margin-top: 30px;
+    font-family: LemonMilkLight;
+    font-size: 25px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 20px;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header .bold {
+    font-family: LemonMilkBold;
+}
