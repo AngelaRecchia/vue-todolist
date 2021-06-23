@@ -13,10 +13,20 @@
     <div id="app">
 
         <header>
-            <!-- <div>the</div>  -->
             <div class="bold">To Do</div>
             <div>List</div>
         </header>
+
+        <nav>
+            <input type="text" v-model="newTask" @keyup.enter="addTask">
+            <div id="add" class="center" @click="addTask">add</div>
+        </nav>
+
+        <main>
+            <ul>
+                <li v-for="(task, index) in tasks">{{task}}</li>
+            </ul>
+        </main>
 
 
     </div>
