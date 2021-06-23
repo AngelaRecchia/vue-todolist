@@ -89,3 +89,13 @@ main ul li {
     padding: 10px;
     border-bottom: 2px solid black;
 }
+
+main ul li i {
+    float: right;
+    margin-top: 4px;
+}
+
+main > div {
+    padding: 10px;
+    text-align: center;
+}
