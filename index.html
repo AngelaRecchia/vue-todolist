@@ -30,10 +30,19 @@
                     <li v-for="(obj, index) in tasks">
                         {{obj.task}}
                         <i class="fas fa-minus-circle" @click="removeTask(index)"></i>
-                        <i class="fas fa-chevron-circle-down" @click="showSubList(index)"></i>
+                        <span @click="showSubList(index)">
+                            <i v-if="!obj.isShowingSub" class="fas fa-chevron-circle-down"></i>
+                            <i v-else class="fas fa-chevron-circle-up"></i>
+                        </span>
+                        
 
-                        <ul id="subLista" v-if="obj.isShowingSub"  v-for="(sub, index) in obj.subList">
-                            <li>{{sub}}</li>
+                        <div class="subLista" v-if="obj.isShowingSub">
+                            <input type="text" v-model="subInput" class="subInput" placeholder="aggiungi elemento" @keyup.enter="addSub(index)">
+                            <i class="fas fa-plus-circle" @click="addSub(index)" ></i>
+                        </div>
+
+                        <ul class="subLista" v-if="obj.isShowingSub"  v-for="(sub, subIndex) in obj.subList">
+                            <li @click="removeSub(index,subIndex)">{{sub}}</li>
                         </ul>
                         
                     </li>
@@ -42,7 +51,6 @@
                 <div v-if="tasks.length == 0">Nothing to do</div>
     
             </main>
-    
     
         </div> 
     </div>

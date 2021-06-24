@@ -22,17 +22,19 @@ const app = new Vue({
             },
             {
                 task: "Comprare cibo gatti",
-                subList: []
+                subList: [],
+                isShowingSub: false
             },
             {
                 task: "Chiamare Mike",
-                subList: []
+                subList: [],
+                isShowingSub: false
             }
         ],
-        
+        subInput: ""
     },
     methods: {
-        addTask(){
+        addTask() {
             if (this.newTask) {
                 const obj = {};
                 obj.task = this.newTask;
@@ -41,7 +43,7 @@ const app = new Vue({
                 this.newTask = "";
             }
         },
-        removeTask(index){
+        removeTask(index) {
             this.tasks.splice(index, 1);
         },
         showSubList(index) {
@@ -49,7 +51,20 @@ const app = new Vue({
                 this.tasks[index].isShowingSub = false;
             } else {
                 this.tasks[index].isShowingSub = true;
+                for (const elem in this.tasks) {
+                    if(elem != index) this.tasks[elem].isShowingSub = false;
+                    this.subInput = "";
+                }
             }
+        },
+        addSub(index) {
+            if (this.subInput) {
+                this.tasks[index].subList.unshift(this.subInput);
+                this.subInput = "";
+            }
+        },
+        removeSub(index, subIndex) {
+            this.tasks[index].subList.splice(subIndex, 1);
         }
 
     }
