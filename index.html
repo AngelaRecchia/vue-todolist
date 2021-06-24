@@ -31,7 +31,7 @@
                         {{obj.task}}
                         <i class="fas fa-minus-circle" @click="removeTask(index)"></i>
                         <i class="fas fa-chevron-circle-down" @click="showSubList(index)"></i>
-                        <ul id="subLista"></ul>
+                        <ul id="subLista" v-bind:key="index"></ul>
                         <template v-if="isShowingSub" >
                             
                         </template>

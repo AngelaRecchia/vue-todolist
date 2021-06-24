@@ -16,7 +16,7 @@ const app = new Vue({
             },
             {
                 task: "Pulire casa",
-                subList: []
+                subList: ["bagno", "lavare pavimento cucina"]
             },
             {
                 task: "Comprare cibo gatti",
