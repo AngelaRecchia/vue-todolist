@@ -12,11 +12,13 @@ const app = new Vue({
         tasks: [
             {
                 task: "Fare la spesa",
-                subList: ["latte", "pasta", "caffè", "verdura"]
+                subList: ["latte", "pasta", "caffè", "verdura"],
+                isShowingSub: false
             },
             {
                 task: "Pulire casa",
-                subList: ["bagno", "lavare pavimento cucina"]
+                subList: ["bagno", "lavare pavimento cucina"],
+                isShowingSub: false
             },
             {
                 task: "Comprare cibo gatti",
@@ -27,7 +29,7 @@ const app = new Vue({
                 subList: []
             }
         ],
-        isShowingSub: false
+        
     },
     methods: {
         addTask(){
@@ -42,19 +44,11 @@ const app = new Vue({
         removeTask(index){
             this.tasks.splice(index, 1);
         },
-        showSubList(index){
-            if (this.isShowingSub) {
-                this.isShowingSub = false;
-                document.getElementById("subLista").innerHTML = "";
-            }
-            else {
-                for (elem of this.tasks[index].subList) {
-                    document.getElementById("subLista").innerHTML += 
-                    `
-                        <li>${elem}</li>
-                    `
-                }
-                this.isShowingSub = true;
+        showSubList(index) {
+            if (this.tasks[index].isShowingSub) {
+                this.tasks[index].isShowingSub = false;
+            } else {
+                this.tasks[index].isShowingSub = true;
             }
         }
 

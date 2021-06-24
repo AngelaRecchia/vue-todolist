@@ -31,10 +31,11 @@
                         {{obj.task}}
                         <i class="fas fa-minus-circle" @click="removeTask(index)"></i>
                         <i class="fas fa-chevron-circle-down" @click="showSubList(index)"></i>
-                        <ul id="subLista" v-bind:key="index"></ul>
-                        <template v-if="isShowingSub" >
-                            
-                        </template>
+
+                        <ul id="subLista" v-if="obj.isShowingSub"  v-for="(sub, index) in obj.subList">
+                            <li>{{sub}}</li>
+                        </ul>
+                        
                     </li>
                 </ul>
     
