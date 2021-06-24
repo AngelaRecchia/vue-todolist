@@ -39,6 +39,7 @@ const app = new Vue({
                 const obj = {};
                 obj.task = this.newTask;
                 obj.subList = [];
+                obj.isShowingSub = false;
                 this.tasks.push(obj);
                 this.newTask = "";
             }
