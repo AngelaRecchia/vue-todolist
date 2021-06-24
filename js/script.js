@@ -10,21 +10,53 @@ const app = new Vue({
     data: {
         newTask: "",
         tasks: [
-            "Fare la spesa",
-            "Pulire casa",
-            "Comprare cibo gatti",
-            "Chiamare Mike"
-        ]
+            {
+                task: "Fare la spesa",
+                subList: ["latte", "pasta", "caffè", "verdura"]
+            },
+            {
+                task: "Pulire casa",
+                subList: []
+            },
+            {
+                task: "Comprare cibo gatti",
+                subList: []
+            },
+            {
+                task: "Chiamare Mike",
+                subList: []
+            }
+        ],
+        isShowingSub: false
     },
     methods: {
         addTask(){
             if (this.newTask) {
-                this.tasks.push(this.newTask);
+                const obj = {};
+                obj.task = this.newTask;
+                obj.subList = [];
+                this.tasks.push(obj);
                 this.newTask = "";
             }
         },
         removeTask(index){
             this.tasks.splice(index, 1);
+        },
+        showSubList(index){
+            if (this.isShowingSub) {
+                this.isShowingSub = false;
+                document.getElementById("subLista").innerHTML = "";
+            }
+            else {
+                for (elem of this.tasks[index].subList) {
+                    document.getElementById("subLista").innerHTML += 
+                    `
+                        <li>${elem}</li>
+                    `
+                }
+                this.isShowingSub = true;
+            }
         }
+
     }
 });

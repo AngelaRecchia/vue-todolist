@@ -27,9 +27,14 @@
     
             <main>
                 <ul>
-                    <li v-for="(task, index) in tasks">
-                        {{task}}
+                    <li v-for="(obj, index) in tasks">
+                        {{obj.task}}
                         <i class="fas fa-minus-circle" @click="removeTask(index)"></i>
+                        <i class="fas fa-chevron-circle-down" @click="showSubList(index)"></i>
+                        <ul id="subLista"></ul>
+                        <template v-if="isShowingSub" >
+                            
+                        </template>
                     </li>
                 </ul>
     
